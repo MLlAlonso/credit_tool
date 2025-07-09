@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramienta de Registro de Créditos</title>
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Créditos</h1>
+
+        <section class="card form-section">
+            <h2>Registrar Nuevo Crédito</h2>
+
+            <form id="creditoForm">
+                <div class="form-group">
+                    <label for="cliente">Cliente:</label>
+                    <input type="text" id="cliente" name="cliente" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="monto">Monto ($):</label>
+                    <input type="number" id="monto" name="monto" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tasa_interes">Tasa de Interés (% anual):</label>
+                    <input type="number" id="tasa_interes" name="tasa_interes" step="0.001" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="plazo">Plazo (meses):</label>
+                    <input type="number" id="plazo" name="plazo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha_otorgamiento">Fecha de Otorgamiento:</label>
+                    <input type="date" id="fecha_otorgamiento" name="fecha_otorgamiento" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Registrar Crédito</button>
+                <button type="button" class="btn btn-secondary" id="cancelEditBtn" style="display:none;">Cancelar Edición</button>
+            </form>
+
+        </section>
+
+        <section class="card list-section">
+            <h2>Créditos Registrados</h2>
+
+            <div class="table-responsive">
+                <table id="creditosTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Monto</th>
+                            <th>Tasa (%)</th>
+                            <th>Plazo (Meses)</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody> </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <section class="card chart-section">
+            <h2>Resumen de Créditos</h2>
+            <div class="chart-container">
+                <canvas id="creditosChart"></canvas>
+            </div>
+            <p>Total de Créditos Otorgados: <span id="totalCreditos">0</span></p>
+        </section>
+    </div>
+
+    <script src="/src/js/main.js"></script>
+    <script src="/src/js/chart_config.js"></script>
+</body>
+</html>

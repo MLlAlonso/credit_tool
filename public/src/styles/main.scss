@@ -1,0 +1,165 @@
+@import 'variables';
+
+body {
+    font-family: $font-family;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: $light-gray;
+    color: $dark-gray;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: $primary-color;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: $card-shadow;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+        width: calc(100% - 22px);
+        padding: 10px;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        font-size: 16px;
+
+        &:focus {
+            outline: none;
+            border-color: $primary-color;
+            box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+        }
+    }
+}
+
+.btn {
+    @include button-style($secondary-color);
+    margin-right: 10px;
+
+    &.btn-primary {
+        @include button-style($primary-color);
+    }
+    &.btn-success {
+        @include button-style($success-color);
+    }
+    &.btn-danger {
+        @include button-style($danger-color);
+    }
+    &.btn-warning {
+        @include button-style($warning-color, $dark-gray);
+    }
+    &.btn-secondary {
+        @include button-style($secondary-color);
+    }
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+#creditosTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    th, td {
+        border: 1px solid $border-color;
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    th {
+        background-color: $primary-color;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #e9ecef;
+    }
+
+    td {
+        vertical-align: middle;
+    }
+
+    td:last-child {
+        white-space: nowrap;
+        .btn {
+            padding: 8px 12px;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+    }
+}
+
+.chart-section {
+    text-align: center;
+    .chart-container {
+        max-width: 800px;
+        margin: 20px auto;
+        position: relative;
+        height: 400px;
+    }
+    p {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: $primary-color;
+    }
+}
+
+// Responsive
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .form-group input {
+        width: calc(100% - 20px);
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+    td:last-child {
+        .btn {
+            display: inline-block;
+            width: auto;
+        }
+    }
+}
