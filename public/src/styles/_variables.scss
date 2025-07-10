@@ -1,37 +1,29 @@
-$primary-color: #007bff;
-$secondary-color: #6c757d;
-$success-color: #28a745;
-$danger-color: #dc3545;
-$warning-color: #ffc107;
-$light-gray: #f8f9fa;
-$dark-gray: #343a40;
-$border-color: #dee2e6;
+$color-primary: #007bff;
+$color-secondary: #6c757d;
+$color-success: #28a745;
+$color-danger: #dc3545;
+$color-warning: #ffc107;
+$color-info: #17a2b8;
+$color-light-gray: #f8f9fa;
+$color-dark-gray: #343a40;
+$color-border: #dee2e6;
+$color-text: #212529;
 
-$font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-$card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+$font-family-base: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$shadow-card: 0 4px 8px rgba(0, 0, 0, 0.1);
+$spacing-unit: 10px;
 
-// Mixins
 @mixin flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-@mixin button-style($bg-color, $text-color: white) {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    background-color: $bg-color;
-    color: $text-color;
-
-    &:hover {
-        opacity: 0.9;
-    }
-
-    &:active {
-        opacity: 0.8;
-    }
+body {
+    font-family: $font-family-base;
+    line-height: 1.6;
+    margin: 0;
+    padding: $spacing-unit * 2;
+    background-color: $color-light-gray;
+    color: $color-text;
 }

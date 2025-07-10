@@ -3,82 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Herramienta de Registro de Créditos</title>
+    <title>Gestión de Créditos</title>
     <link rel="stylesheet" href="/src/styles/main.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Gestión de Créditos</h1>
+        <h1 class="main-title">Créditos Registrados</h1>
 
-        <section class="card form-section">
-            <h2>Registrar Nuevo Crédito</h2>
+        <section class="card form-toggle-section">
+            <button id="toggleFormBtn" class="button button--primary form-toggle-section__button">Registrar Nuevo Crédito</button>
+        </section>
 
-            <form id="creditoForm">
+        <section id="creditoFormSection" class="card form-section" style="display:none;">
+            <h2 class="section-title">Registrar Nuevo Crédito</h2>
+
+            <form id="creditoForm" class="credito-form">
                 <div class="form-group">
-                    <label for="cliente">Cliente:</label>
-                    <input type="text" id="cliente" name="cliente" required>
+                    <label for="cliente" class="form-group__label">Cliente:</label>
+                    <input type="text" id="cliente" name="cliente" required class="form-group__input">
                 </div>
 
                 <div class="form-group">
-                    <label for="monto">Monto ($):</label>
-                    <input type="number" id="monto" name="monto" step="0.01" required>
+                    <label for="monto" class="form-group__label">Monto ($):</label>
+                    <input type="number" id="monto" name="monto" step="0.01" required min="0" class="form-group__input">
                 </div>
 
                 <div class="form-group">
-                    <label for="tasa_interes">Tasa de Interés (% anual):</label>
-                    <input type="number" id="tasa_interes" name="tasa_interes" step="0.001" required>
+                    <label for="tasa_interes" class="form-group__label">Tasa de Interés (% anual):</label>
+                    <input type="number" id="tasa_interes" name="tasa_interes" step="0.001" required min="0" class="form-group__input">
                 </div>
 
                 <div class="form-group">
-                    <label for="plazo">Plazo (meses):</label>
-                    <input type="number" id="plazo" name="plazo" required>
+                    <label for="plazo" class="form-group__label">Plazo (meses):</label>
+                    <input type="number" id="plazo" name="plazo" required min="1" class="form-group__input">
                 </div>
 
                 <div class="form-group">
-                    <label for="fecha_otorgamiento">Fecha de Otorgamiento:</label>
-                    <input type="date" id="fecha_otorgamiento" name="fecha_otorgamiento" required>
+                    <label for="fecha_otorgamiento" class="form-group__label">Fecha de Otorgamiento:</label>
+                    <input type="date" id="fecha_otorgamiento" name="fecha_otorgamiento" required class="form-group__input">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Registrar Crédito</button>
-                <button type="button" class="btn btn-secondary" id="cancelEditBtn" style="display:none;">Cancelar Edición</button>
+                <button type="submit" class="button button--primary credito-form__submit">Registrar Crédito</button>
+                <button type="button" class="button button--secondary credito-form__cancel" id="cancelEditBtn">Cancelar</button>
             </form>
 
         </section>
 
         <section class="card list-section">
-            <h2>Créditos Registrados</h2>
+            
+            <div class="filter-controls">
+                <div class="filter-controls__group">
+                    <label for="filterCliente" class="filter-controls__label">Buscar Cliente:</label>
+                    <input type="text" id="filterCliente" class="filter-controls__input" placeholder="Nombre del cliente">
+                </div>
 
-            <div class="table-responsive">
-                <table id="creditosTable">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Cliente</th>
-                            <th>Monto</th>
-                            <th>Tasa (%)</th>
-                            <th>Plazo (Meses)</th>
-                            <th>Fecha</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody> </tbody>
-                </table>
+                <div class="filter-controls__group">
+                    <label for="minMonto" class="filter-controls__label">Monto Mínimo:</label>
+                    <input type="number" id="minMonto" class="filter-controls__input" step="0.01" min="0">
+                </div>
+
+                <div class="filter-controls__group">
+                    <label for="maxMonto" class="filter-controls__label">Monto Máximo:</label>
+                    <input type="number" id="maxMonto" class="filter-controls__input" step="0.01" min="0">
+                </div>
+
+                <button id="applyFiltersBtn" class="button button--secondary filter-controls__button">Aplicar Filtros</button>
+                <button id="clearFiltersBtn" class="button button--tertiary filter-controls__button">Limpiar Filtros</button>
             </div>
 
+            <div class="table-responsive">
+                <table id="creditosTable" class="creditos-table">
+                    <thead class="creditos-table__head">
+                        <tr class="creditos-table__row">
+                            <th class="creditos-table__header" data-sort-by="id">ID <span class="sort-icon"></span></th>
+                            <th class="creditos-table__header" data-sort-by="cliente">Cliente <span class="sort-icon"></span></th>
+                            <th class="creditos-table__header" data-sort-by="monto">Monto <span class="sort-icon"></span></th>
+                            <th class="creditos-table__header" data-sort-by="tasa_interes">Tasa (%) <span class="sort-icon"></span></th>
+                            <th class="creditos-table__header" data-sort-by="plazo">Plazo (Meses) <span class="sort-icon"></span></th>
+                            <th class="creditos-table__header" data-sort-by="fecha_otorgamiento">Fecha <span class="sort-icon"></span></th>
+                            <th class="creditos-table__header">Pago Mensual</th>
+                            <th class="creditos-table__header">Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="creditos-table__body"> </tbody>
+                </table>
+            </div>
         </section>
 
         <section class="card chart-section">
-            <h2>Resumen de Créditos</h2>
-            <div class="chart-container">
+            <h2 class="section-title">Resumen de Créditos</h2>
+            <div class="chart-section__container">
                 <canvas id="creditosChart"></canvas>
             </div>
-            <p>Total de Créditos Otorgados: <span id="totalCreditos">0</span></p>
+            <p class="chart-section__total">Total de Créditos Otorgados: <span id="totalCreditos">0</span></p>
         </section>
     </div>
 
-    <script src="/src/js/main.js"></script>
-    <script src="/src/js/chart_config.js"></script>
+    <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>

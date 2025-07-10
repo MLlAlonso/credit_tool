@@ -1,10 +1,11 @@
+/* public/src/css/style.scss */
 body {
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 20px;
   background-color: #f8f9fa;
-  color: #343a40;
+  color: #212529;
 }
 
 .container {
@@ -13,7 +14,7 @@ body {
   padding: 20px;
 }
 
-h1, h2 {
+.main-title, .section-title {
   color: #007bff;
   text-align: center;
   margin-bottom: 20px;
@@ -30,174 +31,190 @@ h1, h2 {
 .form-group {
   margin-bottom: 15px;
 }
-.form-group label {
+.form-group__label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
-.form-group input[type=text],
-.form-group input[type=number],
-.form-group input[type=date] {
+.form-group__input {
   width: calc(100% - 22px);
   padding: 10px;
   border: 1px solid #dee2e6;
   border-radius: 4px;
   font-size: 16px;
 }
-.form-group input[type=text]:focus,
-.form-group input[type=number]:focus,
-.form-group input[type=date]:focus {
+.form-group__input:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.btn {
+.button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
-  background-color: #6c757d;
-  color: white;
-  margin-right: 10px;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  text-decoration: none;
 }
-.btn:hover {
-  opacity: 0.9;
-}
-.btn:active {
-  opacity: 0.8;
-}
-.btn.btn-primary {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+.button--primary {
   background-color: #007bff;
   color: white;
 }
-.btn.btn-primary:hover {
-  opacity: 0.9;
+.button--primary:hover {
+  background-color: #0062cc;
 }
-.btn.btn-primary:active {
-  opacity: 0.8;
-}
-.btn.btn-success {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-  background-color: #28a745;
-  color: white;
-}
-.btn.btn-success:hover {
-  opacity: 0.9;
-}
-.btn.btn-success:active {
-  opacity: 0.8;
-}
-.btn.btn-danger {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-  background-color: #dc3545;
-  color: white;
-}
-.btn.btn-danger:hover {
-  opacity: 0.9;
-}
-.btn.btn-danger:active {
-  opacity: 0.8;
-}
-.btn.btn-warning {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-  background-color: #ffc107;
-  color: #343a40;
-}
-.btn.btn-warning:hover {
-  opacity: 0.9;
-}
-.btn.btn-warning:active {
-  opacity: 0.8;
-}
-.btn.btn-secondary {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+.button--secondary {
   background-color: #6c757d;
   color: white;
 }
-.btn.btn-secondary:hover {
-  opacity: 0.9;
+.button--secondary:hover {
+  background-color: #545b62;
 }
-.btn.btn-secondary:active {
-  opacity: 0.8;
+.button--success {
+  background-color: #28a745;
+  color: white;
+}
+.button--success:hover {
+  background-color: #1e7e34;
+}
+.button--danger {
+  background-color: #dc3545;
+  color: white;
+}
+.button--danger:hover {
+  background-color: #bd2130;
+}
+.button--warning {
+  background-color: #ffc107;
+  color: #343a40;
+}
+.button--warning:hover {
+  background-color: #d39e00;
+}
+.button--tertiary {
+  background-color: #17a2b8;
+  color: white;
+}
+.button--tertiary:hover {
+  background-color: #117a8b;
+}
+.button:active {
+  transform: translateY(1px);
+}
+.button + .button {
+  margin-left: 10px;
+}
+.button--sm {
+  padding: 8.3333333333px 12px;
+  font-size: 14px;
 }
 
-.table-responsive {
-  overflow-x: auto;
+.credito-form__submit {
+  margin-right: 10px;
+}
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #e9ecef;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+.filter-controls__group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.filter-controls__label {
+  font-weight: bold;
+  white-space: nowrap;
+}
+.filter-controls__input {
+  padding: 6.6666666667px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 15px;
+  width: 120px;
+}
+.filter-controls__input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.filter-controls__button {
+  align-self: flex-end;
 }
 
-#creditosTable {
+.form-toggle-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.creditos-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
-#creditosTable th, #creditosTable td {
-  border: 1px solid #dee2e6;
-  padding: 12px 15px;
-  text-align: left;
-}
-#creditosTable th {
+.creditos-table__head .creditos-table__header {
   background-color: #007bff;
   color: white;
   font-weight: bold;
   text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  padding: 12px 15px;
+  text-align: left;
 }
-#creditosTable tr:nth-child(even) {
+.creditos-table__head .creditos-table__header .sort-icon {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  transition: transform 0.2s ease;
+}
+.creditos-table__head .creditos-table__header[data-sort-order=asc] .sort-icon {
+  border-bottom: 5px solid white;
+}
+.creditos-table__head .creditos-table__header[data-sort-order=desc] .sort-icon {
+  border-top: 5px solid white;
+}
+.creditos-table__row:nth-child(even) {
   background-color: #f2f2f2;
 }
-#creditosTable tr:hover {
+.creditos-table__row:hover {
   background-color: #e9ecef;
 }
-#creditosTable td {
+.creditos-table th, .creditos-table td {
+  border: 1px solid #dee2e6;
+  padding: 12px 15px;
+  text-align: left;
+}
+.creditos-table td {
   vertical-align: middle;
 }
-#creditosTable td:last-child {
+.creditos-table__actions {
   white-space: nowrap;
 }
-#creditosTable td:last-child .btn {
-  padding: 8px 12px;
-  font-size: 14px;
+.creditos-table__actions .button {
   margin-right: 5px;
 }
 
 .chart-section {
   text-align: center;
 }
-.chart-section .chart-container {
+.chart-section__container {
   max-width: 800px;
   margin: 20px auto;
   position: relative;
   height: 400px;
 }
-.chart-section p {
+.chart-section__total {
   font-size: 1.2em;
   font-weight: bold;
   color: #007bff;
@@ -210,16 +227,28 @@ h1, h2 {
   .card {
     padding: 20px;
   }
-  .form-group input {
+  .form-group__input {
     width: calc(100% - 20px);
   }
-  .btn {
+  .button {
     display: block;
     width: 100%;
     margin-bottom: 10px;
-    margin-right: 0;
+    margin-left: 0 !important;
   }
-  td:last-child .btn {
+  .filter-controls {
+    flex-direction: column;
+  }
+  .filter-controls__group {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .filter-controls__input {
+    width: calc(100% - 20px);
+  }
+  .creditos-table__actions .button {
     display: inline-block;
     width: auto;
   }

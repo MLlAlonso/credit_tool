@@ -1,120 +1,210 @@
-@import 'variables';
-
-body {
-    font-family: $font-family;
-    line-height: 1.6;
-    margin: 0;
-    padding: 20px;
-    background-color: $light-gray;
-    color: $dark-gray;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: $spacing-unit * 2;
 }
 
-h1, h2 {
-    color: $primary-color;
+.main-title, .section-title {
+    color: $color-primary;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: $spacing-unit * 2;
 }
 
 .card {
     background-color: white;
     border-radius: 8px;
-    box-shadow: $card-shadow;
-    padding: 30px;
-    margin-bottom: 30px;
+    box-shadow: $shadow-card;
+    padding: $spacing-unit * 3;
+    margin-bottom: $spacing-unit * 3;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: $spacing-unit * 1.5;
 
-    label {
+    &__label {
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: $spacing-unit / 2;
         font-weight: bold;
     }
 
-    input[type="text"],
-    input[type="number"],
-    input[type="date"] {
+    &__input {
         width: calc(100% - 22px);
-        padding: 10px;
-        border: 1px solid $border-color;
+        padding: $spacing-unit;
+        border: 1px solid $color-border;
         border-radius: 4px;
         font-size: 16px;
 
         &:focus {
             outline: none;
-            border-color: $primary-color;
-            box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+            border-color: $color-primary;
+            box-shadow: 0 0 0 0.2rem rgba($color-primary, 0.25);
         }
     }
 }
 
-.btn {
-    @include button-style($secondary-color);
-    margin-right: 10px;
+.button {
+    padding: $spacing-unit 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    text-decoration: none;
 
-    &.btn-primary {
-        @include button-style($primary-color);
+    &--primary {
+        background-color: $color-primary;
+        color: white;
+        &:hover { background-color: darken($color-primary, 10%); }
     }
-    &.btn-success {
-        @include button-style($success-color);
+    &--secondary {
+        background-color: $color-secondary;
+        color: white;
+        &:hover { background-color: darken($color-secondary, 10%); }
     }
-    &.btn-danger {
-        @include button-style($danger-color);
+    &--success {
+        background-color: $color-success;
+        color: white;
+        &:hover { background-color: darken($color-success, 10%); }
     }
-    &.btn-warning {
-        @include button-style($warning-color, $dark-gray);
+    &--danger {
+        background-color: $color-danger;
+        color: white;
+        &:hover { background-color: darken($color-danger, 10%); }
     }
-    &.btn-secondary {
-        @include button-style($secondary-color);
+    &--warning {
+        background-color: $color-warning;
+        color: $color-dark-gray;
+        &:hover { background-color: darken($color-warning, 10%); }
+    }
+    &--tertiary {
+        background-color: $color-info;
+        color: white;
+        &:hover { background-color: darken($color-info, 10%); }
+    }
+
+    &:active {
+        transform: translateY(1px);
+    }
+
+    & + & { 
+        margin-left: $spacing-unit;
+    }
+
+    &--sm {
+        padding: $spacing-unit / 1.2 $spacing-unit * 1.2;
+        font-size: 14px;
     }
 }
 
-.table-responsive {
-    overflow-x: auto;
+.credito-form {
+    &__submit {
+        margin-right: $spacing-unit;
+    }
 }
 
-#creditosTable {
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-unit;
+    margin-bottom: $spacing-unit * 2;
+    padding: $spacing-unit * 1.5;
+    background-color: #e9ecef;
+    border-radius: 6px;
+    border: 1px solid $color-border;
+
+    &__group {
+        display: flex;
+        align-items: center;
+        gap: $spacing-unit / 2;
+    }
+
+    &__label {
+        font-weight: bold;
+        white-space: nowrap;
+    }
+
+    &__input {
+        padding: $spacing-unit / 1.5;
+        border: 1px solid $color-border;
+        border-radius: 4px;
+        font-size: 15px;
+        width: 120px;
+
+        &:focus {
+            outline: none;
+            border-color: $color-primary;
+            box-shadow: 0 0 0 0.2rem rgba($color-primary, 0.25);
+        }
+    }
+
+    &__button {
+        align-self: flex-end;
+    }
+}
+
+.form-toggle-section {
+    text-align: center;
+    margin-bottom: $spacing-unit * 2;
+}
+
+.creditos-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: $spacing-unit * 2;
+
+    &__head {
+        .creditos-table__header {
+            background-color: $color-primary;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            padding: 12px 15px;
+            text-align: left;
+
+            .sort-icon {
+                display: inline-block;
+                width: 0;
+                height: 0;
+                margin-left: 5px;
+                vertical-align: middle;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                transition: transform 0.2s ease;
+            }
+
+            &[data-sort-order="asc"] .sort-icon {
+                border-bottom: 5px solid white;
+            }
+            &[data-sort-order="desc"] .sort-icon {
+                border-top: 5px solid white;
+            }
+        }
+    }
+
+    &__row {
+        &:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        &:hover {
+            background-color: #e9ecef;
+        }
+    }
 
     th, td {
-        border: 1px solid $border-color;
+        border: 1px solid $color-border;
         padding: 12px 15px;
         text-align: left;
-    }
-
-    th {
-        background-color: $primary-color;
-        color: white;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    tr:hover {
-        background-color: #e9ecef;
     }
 
     td {
         vertical-align: middle;
     }
 
-    td:last-child {
+    &__actions {
         white-space: nowrap;
-        .btn {
-            padding: 8px 12px;
-            font-size: 14px;
+        .button {
             margin-right: 5px;
         }
     }
@@ -122,42 +212,57 @@ h1, h2 {
 
 .chart-section {
     text-align: center;
-    .chart-container {
+
+    &__container {
         max-width: 800px;
-        margin: 20px auto;
+        margin: $spacing-unit * 2 auto;
         position: relative;
         height: 400px;
     }
-    p {
+
+    &__total {
         font-size: 1.2em;
         font-weight: bold;
-        color: $primary-color;
+        color: $color-primary;
     }
 }
 
-// Responsive
+// Responsive adjustments
 @media (max-width: 768px) {
     body {
-        padding: 10px;
+        padding: $spacing-unit;
     }
 
     .card {
-        padding: 20px;
+        padding: $spacing-unit * 2;
     }
 
-    .form-group input {
+    .form-group__input {
         width: calc(100% - 20px);
     }
 
-    .btn {
+    .button {
         display: block;
         width: 100%;
-        margin-bottom: 10px;
-        margin-right: 0;
+        margin-bottom: $spacing-unit;
+        margin-left: 0 !important;
     }
 
-    td:last-child {
-        .btn {
+    .filter-controls {
+        flex-direction: column;
+        &__group {
+            width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $spacing-unit / 2;
+        }
+        &__input {
+            width: calc(100% - 20px);
+        }
+    }
+
+    .creditos-table__actions {
+        .button {
             display: inline-block;
             width: auto;
         }
