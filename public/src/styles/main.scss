@@ -256,6 +256,23 @@
   }
 }
 
+.footer {
+    background-color: $color-primary;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    a {
+        color: #009E66;
+        text-decoration: none;
+    }
+}
+
 // Responsive adjustments
 @media (max-width: 768px) {
   body {
