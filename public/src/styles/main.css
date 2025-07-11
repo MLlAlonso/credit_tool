@@ -1,11 +1,10 @@
-/* public/src/css/style.scss */
 body {
-  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 20px;
   background-color: #f8f9fa;
-  color: #212529;
+  color: #191B1C;
 }
 
 .container {
@@ -14,15 +13,35 @@ body {
   padding: 20px;
 }
 
-.main-title, .section-title {
-  color: #007bff;
+.main-title,
+.section-title {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #05093B;
   text-align: center;
   margin-bottom: 20px;
+  position: relative;
+}
+.main-title::after,
+.section-title::after {
+  content: "";
+  display: block;
+  margin: 10px auto 0 auto;
+  width: 120px;
+  height: 4px;
+  background: #CF1714;
+  border-radius: 2px;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card {
   background-color: white;
-  border-radius: 8px;
+  border-radius: 24px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 30px;
   margin-bottom: 30px;
@@ -45,8 +64,8 @@ body {
 }
 .form-group__input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  border-color: #05093B;
+  box-shadow: 0 0 0 0.2rem rgba(5, 9, 59, 0.25);
 }
 
 .button {
@@ -59,11 +78,12 @@ body {
   text-decoration: none;
 }
 .button--primary {
-  background-color: #007bff;
+  background-color: #05093B;
   color: white;
+  font-weight: 700;
 }
 .button--primary:hover {
-  background-color: #0062cc;
+  background-color: #01020c;
 }
 .button--secondary {
   background-color: #6c757d;
@@ -72,29 +92,22 @@ body {
 .button--secondary:hover {
   background-color: #545b62;
 }
-.button--success {
-  background-color: #28a745;
-  color: white;
-}
-.button--success:hover {
-  background-color: #1e7e34;
-}
 .button--danger {
-  background-color: #dc3545;
+  background-color: #CF1714;
   color: white;
 }
 .button--danger:hover {
-  background-color: #bd2130;
+  background-color: #8A0B0B;
 }
 .button--warning {
-  background-color: #ffc107;
-  color: #343a40;
+  background-color: #FB7000;
+  color: white;
 }
 .button--warning:hover {
-  background-color: #d39e00;
+  background-color: #c85900;
 }
 .button--tertiary {
-  background-color: #17a2b8;
+  background-color: #05093B;
   color: white;
 }
 .button--tertiary:hover {
@@ -114,10 +127,11 @@ body {
 .credito-form__submit {
   margin-right: 10px;
 }
+
 .filter-controls {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 6px;
   margin-bottom: 20px;
   padding: 15px;
   background-color: #e9ecef;
@@ -142,8 +156,8 @@ body {
 }
 .filter-controls__input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  border-color: #05093B;
+  box-shadow: 0 0 0 0.2rem rgba(5, 9, 59, 0.25);
 }
 .filter-controls__button {
   align-self: flex-end;
@@ -153,13 +167,14 @@ body {
   text-align: center;
   margin-bottom: 20px;
 }
+
 .creditos-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 .creditos-table__head .creditos-table__header {
-  background-color: #007bff;
+  background-color: #05093B;
   color: white;
   font-weight: bold;
   text-transform: uppercase;
@@ -190,7 +205,8 @@ body {
 .creditos-table__row:hover {
   background-color: #e9ecef;
 }
-.creditos-table th, .creditos-table td {
+.creditos-table th,
+.creditos-table td {
   border: 1px solid #dee2e6;
   padding: 12px 15px;
   text-align: left;
@@ -217,7 +233,7 @@ body {
 .chart-section__total {
   font-size: 1.2em;
   font-weight: bold;
-  color: #007bff;
+  color: #05093B;
 }
 
 @media (max-width: 768px) {
@@ -229,6 +245,9 @@ body {
   }
   .form-group__input {
     width: calc(100% - 20px);
+  }
+  .section-header #toggleFormBtn {
+    width: 50%;
   }
   .button {
     display: block;
@@ -247,6 +266,10 @@ body {
   }
   .filter-controls__input {
     width: calc(100% - 20px);
+  }
+  .creditos-table__actions {
+    display: flex;
+    flex-direction: column;
   }
   .creditos-table__actions .button {
     display: inline-block;

@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Créditos</title>
+    <link rel="icon" href="src/img/Ml.png">
     <link rel="stylesheet" href="/src/styles/main.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="container">
-        <h1 class="main-title">Créditos Registrados</h1>
-
-        <section class="card form-toggle-section">
-            <button id="toggleFormBtn" class="button button--primary form-toggle-section__button">Registrar Nuevo Crédito</button>
-        </section>
+        <h1 class="main-title">Herramienta de Registro de Créditos</h1>
 
         <section id="creditoFormSection" class="card form-section" style="display:none;">
             <h2 class="section-title">Registrar Nuevo Crédito</h2>
@@ -21,22 +19,22 @@
             <form id="creditoForm" class="credito-form">
                 <div class="form-group">
                     <label for="cliente" class="form-group__label">Cliente:</label>
-                    <input type="text" id="cliente" name="cliente" required class="form-group__input">
+                    <input type="text" id="cliente" name="cliente" required class="form-group__input" placeholder="Nombre del cliente">
                 </div>
 
                 <div class="form-group">
                     <label for="monto" class="form-group__label">Monto ($):</label>
-                    <input type="number" id="monto" name="monto" step="0.01" required min="0" class="form-group__input">
-                </div>
+                    <input type="number" id="monto" name="monto" step="0.01" required min="0" class="form-group__input" placeholder="Monto del crédito">
+                </div> 
 
                 <div class="form-group">
                     <label for="tasa_interes" class="form-group__label">Tasa de Interés (% anual):</label>
-                    <input type="number" id="tasa_interes" name="tasa_interes" step="0.001" required min="0" class="form-group__input">
+                    <input type="number" id="tasa_interes" name="tasa_interes" step="0.001" required min="0" class="form-group__input" placeholder="Tasa de interés anual">
                 </div>
 
                 <div class="form-group">
                     <label for="plazo" class="form-group__label">Plazo (meses):</label>
-                    <input type="number" id="plazo" name="plazo" required min="1" class="form-group__input">
+                    <input type="number" id="plazo" name="plazo" required min="1" class="form-group__input" placeholder="Plazo en meses">
                 </div>
 
                 <div class="form-group">
@@ -51,6 +49,10 @@
         </section>
 
         <section class="card list-section">
+            <div class="section-header">
+                <h2 class="section-title">Créditos Registrados</h2>
+                <button id="toggleFormBtn" class="button button--primary form-toggle-section__button">Registrar Nuevo Crédito</button>
+            </div>
             
             <div class="filter-controls">
                 <div class="filter-controls__group">

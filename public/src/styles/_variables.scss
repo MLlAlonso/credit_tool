@@ -1,15 +1,17 @@
-$color-primary: #007bff;
+$color-primary: #05093B;
+$color-emphasys: #CF1714;
+$color-emphasys-hover: #8A0B0B;
+$color-indicator: #FB7000;
+
 $color-secondary: #6c757d;
-$color-success: #28a745;
-$color-danger: #dc3545;
-$color-warning: #ffc107;
 $color-info: #17a2b8;
 $color-light-gray: #f8f9fa;
 $color-dark-gray: #343a40;
 $color-border: #dee2e6;
-$color-text: #212529;
+$color-text: #191B1C;
 
-$font-family-base: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-title: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-text: 'Poppins', sans-serif;
 $shadow-card: 0 4px 8px rgba(0, 0, 0, 0.1);
 $spacing-unit: 10px;
 
@@ -20,7 +22,7 @@ $spacing-unit: 10px;
 }
 
 body {
-    font-family: $font-family-base;
+    font-family: $font-text;
     line-height: 1.6;
     margin: 0;
     padding: $spacing-unit * 2;

@@ -1,270 +1,305 @@
+@import "variables";
+
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: $spacing-unit * 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-unit * 2;
 }
 
-.main-title, .section-title {
-    color: $color-primary;
-    text-align: center;
-    margin-bottom: $spacing-unit * 2;
+.main-title,
+.section-title {
+  font-family: $font-title;
+  color: $color-primary;
+  text-align: center;
+  margin-bottom: $spacing-unit * 2;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    margin: $spacing-unit auto 0 auto;
+    width: 120px;
+    height: 4px;
+    background: $color-emphasys;
+    border-radius: 2px;
+  }
+}
+
+.section-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: $shadow-card;
-    padding: $spacing-unit * 3;
-    margin-bottom: $spacing-unit * 3;
+  background-color: white;
+  border-radius: 24px;
+  box-shadow: $shadow-card;
+  padding: $spacing-unit * 3;
+  margin-bottom: $spacing-unit * 3;
 }
 
 .form-group {
-    margin-bottom: $spacing-unit * 1.5;
+  margin-bottom: $spacing-unit * 1.5;
 
-    &__label {
-        display: block;
-        margin-bottom: $spacing-unit / 2;
-        font-weight: bold;
+  &__label {
+    display: block;
+    margin-bottom: $spacing-unit / 2;
+    font-weight: bold;
+  }
+
+  &__input {
+    width: calc(100% - 22px);
+    padding: $spacing-unit;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    font-size: 16px;
+
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+      box-shadow: 0 0 0 0.2rem rgba($color-primary, 0.25);
     }
-
-    &__input {
-        width: calc(100% - 22px);
-        padding: $spacing-unit;
-        border: 1px solid $color-border;
-        border-radius: 4px;
-        font-size: 16px;
-
-        &:focus {
-            outline: none;
-            border-color: $color-primary;
-            box-shadow: 0 0 0 0.2rem rgba($color-primary, 0.25);
-        }
-    }
+  }
 }
 
 .button {
-    padding: $spacing-unit 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    text-decoration: none;
+  padding: $spacing-unit 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  text-decoration: none;
 
-    &--primary {
-        background-color: $color-primary;
-        color: white;
-        &:hover { background-color: darken($color-primary, 10%); }
+  &--primary {
+    background-color: $color-primary;
+    color: white;
+    font-weight: 700;
+    &:hover {
+      background-color: darken($color-primary, 10%);
     }
-    &--secondary {
-        background-color: $color-secondary;
-        color: white;
-        &:hover { background-color: darken($color-secondary, 10%); }
+  }
+  &--secondary {
+    background-color: $color-secondary;
+    color: white;
+    &:hover {
+      background-color: darken($color-secondary, 10%);
     }
-    &--success {
-        background-color: $color-success;
-        color: white;
-        &:hover { background-color: darken($color-success, 10%); }
+  }
+  &--danger {
+    background-color: $color-emphasys;
+    color: white;
+    &:hover {
+      background-color: $color-emphasys-hover;
     }
-    &--danger {
-        background-color: $color-danger;
-        color: white;
-        &:hover { background-color: darken($color-danger, 10%); }
+  }
+  &--warning {
+    background-color: $color-indicator;
+    color: white;
+    &:hover {
+      background-color: darken($color-indicator, 10%);
     }
-    &--warning {
-        background-color: $color-warning;
-        color: $color-dark-gray;
-        &:hover { background-color: darken($color-warning, 10%); }
+  }
+  &--tertiary {
+    background-color: $color-primary;
+    color: white;
+    &:hover {
+      background-color: darken($color-info, 10%);
     }
-    &--tertiary {
-        background-color: $color-info;
-        color: white;
-        &:hover { background-color: darken($color-info, 10%); }
-    }
+  }
 
-    &:active {
-        transform: translateY(1px);
-    }
+  &:active {
+    transform: translateY(1px);
+  }
 
-    & + & { 
-        margin-left: $spacing-unit;
-    }
+  & + & {
+    margin-left: $spacing-unit;
+  }
 
-    &--sm {
-        padding: $spacing-unit / 1.2 $spacing-unit * 1.2;
-        font-size: 14px;
-    }
+  &--sm {
+    padding: $spacing-unit / 1.2 $spacing-unit * 1.2;
+    font-size: 14px;
+  }
 }
 
 .credito-form {
-    &__submit {
-        margin-right: $spacing-unit;
-    }
+  &__submit {
+    margin-right: $spacing-unit;
+  }
 }
 
 .filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: $spacing-unit * 2;
+  padding: $spacing-unit * 1.5;
+  background-color: #e9ecef;
+  border-radius: 6px;
+  border: 1px solid $color-border;
+
+  &__group {
     display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-unit;
-    margin-bottom: $spacing-unit * 2;
-    padding: $spacing-unit * 1.5;
-    background-color: #e9ecef;
-    border-radius: 6px;
+    align-items: center;
+    gap: $spacing-unit / 2;
+  }
+
+  &__label {
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  &__input {
+    padding: $spacing-unit / 1.5;
     border: 1px solid $color-border;
+    border-radius: 4px;
+    font-size: 15px;
+    width: 120px;
 
-    &__group {
-        display: flex;
-        align-items: center;
-        gap: $spacing-unit / 2;
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+      box-shadow: 0 0 0 0.2rem rgba($color-primary, 0.25);
     }
+  }
 
-    &__label {
-        font-weight: bold;
-        white-space: nowrap;
-    }
-
-    &__input {
-        padding: $spacing-unit / 1.5;
-        border: 1px solid $color-border;
-        border-radius: 4px;
-        font-size: 15px;
-        width: 120px;
-
-        &:focus {
-            outline: none;
-            border-color: $color-primary;
-            box-shadow: 0 0 0 0.2rem rgba($color-primary, 0.25);
-        }
-    }
-
-    &__button {
-        align-self: flex-end;
-    }
+  &__button {
+    align-self: flex-end;
+  }
 }
 
 .form-toggle-section {
-    text-align: center;
-    margin-bottom: $spacing-unit * 2;
+  text-align: center;
+  margin-bottom: $spacing-unit * 2;
 }
 
 .creditos-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: $spacing-unit * 2;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: $spacing-unit * 2;
 
-    &__head {
-        .creditos-table__header {
-            background-color: $color-primary;
-            color: white;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            position: relative;
-            padding: 12px 15px;
-            text-align: left;
+  &__head {
+    .creditos-table__header {
+      background-color: $color-primary;
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+      padding: 12px 15px;
+      text-align: left;
 
-            .sort-icon {
-                display: inline-block;
-                width: 0;
-                height: 0;
-                margin-left: 5px;
-                vertical-align: middle;
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                transition: transform 0.2s ease;
-            }
-
-            &[data-sort-order="asc"] .sort-icon {
-                border-bottom: 5px solid white;
-            }
-            &[data-sort-order="desc"] .sort-icon {
-                border-top: 5px solid white;
-            }
-        }
-    }
-
-    &__row {
-        &:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        &:hover {
-            background-color: #e9ecef;
-        }
-    }
-
-    th, td {
-        border: 1px solid $color-border;
-        padding: 12px 15px;
-        text-align: left;
-    }
-
-    td {
+      .sort-icon {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 5px;
         vertical-align: middle;
-    }
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        transition: transform 0.2s ease;
+      }
 
-    &__actions {
-        white-space: nowrap;
-        .button {
-            margin-right: 5px;
-        }
+      &[data-sort-order="asc"] .sort-icon {
+        border-bottom: 5px solid white;
+      }
+      &[data-sort-order="desc"] .sort-icon {
+        border-top: 5px solid white;
+      }
     }
+  }
+
+  &__row {
+    &:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    &:hover {
+      background-color: #e9ecef;
+    }
+  }
+
+  th,
+  td {
+    border: 1px solid $color-border;
+    padding: 12px 15px;
+    text-align: left;
+  }
+
+  td {
+    vertical-align: middle;
+  }
+
+  &__actions {
+    white-space: nowrap;
+    .button {
+      margin-right: 5px;
+    }
+  }
 }
 
 .chart-section {
-    text-align: center;
+  text-align: center;
 
-    &__container {
-        max-width: 800px;
-        margin: $spacing-unit * 2 auto;
-        position: relative;
-        height: 400px;
-    }
+  &__container {
+    max-width: 800px;
+    margin: $spacing-unit * 2 auto;
+    position: relative;
+    height: 400px;
+  }
 
-    &__total {
-        font-size: 1.2em;
-        font-weight: bold;
-        color: $color-primary;
-    }
+  &__total {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: $color-primary;
+  }
 }
 
 // Responsive adjustments
 @media (max-width: 768px) {
-    body {
-        padding: $spacing-unit;
-    }
+  body {
+    padding: $spacing-unit;
+  }
 
-    .card {
-        padding: $spacing-unit * 2;
-    }
+  .card {
+    padding: $spacing-unit * 2;
+  }
 
-    .form-group__input {
-        width: calc(100% - 20px);
-    }
+  .form-group__input {
+    width: calc(100% - 20px);
+  }
 
+  .section-header #toggleFormBtn {
+    width: 50%;
+  }
+
+  .button {
+    display: block;
+    width: 100%;
+    margin-bottom: $spacing-unit;
+    margin-left: 0 !important;
+  }
+
+  .filter-controls {
+    flex-direction: column;
+    &__group {
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $spacing-unit / 2;
+    }
+    &__input {
+      width: calc(100% - 20px);
+    }
+  }
+
+  .creditos-table__actions {
+    display: flex;
+    flex-direction: column;
     .button {
-        display: block;
-        width: 100%;
-        margin-bottom: $spacing-unit;
-        margin-left: 0 !important;
+      display: inline-block;
+      width: auto;
     }
-
-    .filter-controls {
-        flex-direction: column;
-        &__group {
-            width: 100%;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: $spacing-unit / 2;
-        }
-        &__input {
-            width: calc(100% - 20px);
-        }
-    }
-
-    .creditos-table__actions {
-        .button {
-            display: inline-block;
-            width: auto;
-        }
-    }
+  }
 }
